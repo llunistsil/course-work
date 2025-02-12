@@ -1,13 +1,12 @@
+import { TuiRoot } from "@taiga-ui/core";
 import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { NxWelcomeComponent } from './nx-welcome.component';
 
 @Component({
-  imports: [NxWelcomeComponent, RouterModule],
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.less',
+    imports: [RouterModule, TuiRoot],
+    selector: 'app-root',
+    templateUrl: './app.component.html',
+    styleUrl: './app.component.less',
+    standalone: true
 })
-export class AppComponent {
-  title = 'cource-work';
-}
+export class AppComponent {}
