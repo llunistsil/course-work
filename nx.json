@@ -14,7 +14,7 @@
     ],
     "sharedGlobals": []
   },
-  "nxCloudId": "67a0d90264ad6b108391e4ba",
+  "neverConnectToCloud": true,
   "targetDefaults": {
     "@angular-devkit/build-angular:application": {
       "cache": true,
