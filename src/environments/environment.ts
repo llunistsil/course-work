@@ -1,3 +1,3 @@
 export const environment = {
-  apiUrl: 'https://grumpy-windows-heal.loca.lt',
+  apiUrl: 'http://localhost:8081',
 };

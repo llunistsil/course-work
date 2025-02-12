@@ -41,15 +41,16 @@ export class AuthService {
         return getBotName$.pipe(
             catchError((res) => of(res)),
             map((res) => {
+              console.log(res)
                 switch (res.status) {
                     case 200:
-                        this.#currentBot = res.body
+                        this.#currentBot = res.error.text
                         break;
                     default:
                         throw new Error('Login error');
                 }
 
-                return res.body;
+                return res.error.text;
             })
         )
     }
