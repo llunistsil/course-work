@@ -9,10 +9,9 @@ import {
 } from '@angular/core';
 import { CommonModule, DOCUMENT } from '@angular/common';
 import { AuthService } from '../auth/auth.service';
-import { take, tap } from 'rxjs';
+import { take } from 'rxjs';
 import { WidgetConfiguration } from './widget';
 import { User } from '../auth/models/user';
-import { environment } from '../../../environments/environment';
 
 const TELEGRAM_WIDGET_VERSION = 22;
 
@@ -32,7 +31,6 @@ const config: WidgetConfiguration = {
       </div>`,
     changeDetection: ChangeDetectionStrategy.OnPush,
     standalone: true,
-    styleUrl: 'tg-login-widget.component.less'
 })
 export class TgLoginWidgetComponent implements AfterViewInit {
     private readonly document = inject(DOCUMENT);
