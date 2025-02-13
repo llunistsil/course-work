@@ -1,5 +1,5 @@
 import { inject, Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { User } from './models/user';
 import { catchError, map, Observable, of } from 'rxjs';
@@ -54,11 +54,11 @@ export class AuthService {
   }
 
   login(user: User): Observable<void> {
-    console.log('wvbetbrv');
     const url = `${environment.apiUrl}/auth/login`;
 
     const loginObservable = this.http.post<void>(url, user, {
-      observe: 'response'
+      observe: 'response',
+      withCredentials: true
     });
 
     return loginObservable.pipe(
@@ -75,7 +75,7 @@ export class AuthService {
             throw new Error('Login error');
         }
 
-        return res.body!;
+        return res.data!;
       })
     );
   }
