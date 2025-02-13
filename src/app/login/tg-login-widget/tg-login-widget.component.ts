@@ -49,11 +49,6 @@ export class TgLoginWidgetComponent implements AfterViewInit {
     }
 
     ngAfterViewInit() {
-        if (environment.setCookie) {
-            document.cookie = 'accessToken=eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI5NTI2NTg1MTciLCJleHAiOjE3Mzk1Mzk3NjIsImZpcnN0TmFtZSI6IkRtaXRyaXkiLCJ1c2VybmFtZSI6InN1Y2Nlc3NmdWxseV9mYWlsIn0.ImtmNuPWVedizEK0FAkchTs4g8v0snxZ7KpN52Lu5CagvLokAQX-dHqMvKnMXIpj1Cxg_J9uVNMSZ0EnmSZjGQ; Path=/; Secure; HttpOnly; SameSite=None';
-
-            return;
-        }
         const scriptAttrs = this.compileConfigs();
         const script = this.document.createElement('script');
 

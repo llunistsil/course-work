@@ -1,3 +1,82 @@
 <tui-root>
-  <router-outlet></router-outlet>
+  <header tuiNavigationHeader>
+    <span [routerLink]="['/']" class="logo">
+      <tui-icon icon="@tui.badge-russian-ruble" [style.height.px]="28" [style.width.px]="28"/>
+    </span>
+    <span tuiNavigationLogo>
+      Over Money
+    </span>
+    <hr />
+    @if (authService.currentUser?.username) {
+      <a
+        iconStart="@tui.files"
+        tuiIconButton
+        type="button"
+        [routerLink]="['']"
+      >
+        File Export
+      </a>
+
+      <tui-avatar [src]="authService.currentUser!.username!.slice(0, 2)" [round]="false"
+                  [style.background-color]="'var(--tui-background-neutral-2)'" />
+      <button
+        iconStart="@tui.log-out"
+        tuiIconButton
+        type="button"
+        [routerLink]="['login']"
+        (click)="logout()"
+      >
+        Log out
+      </button>
+    }
+  </header>
+  <div [style.display]="'flex'">
+    @if (authService.currentUser) {
+      <aside
+        [tuiNavigationAside]="expanded()"
+      >
+        <button
+          iconStart="@tui.files"
+          tuiAsideItem
+          type="button"
+          (click)="router.navigate([''])"
+        >
+          Export stats
+        </button>
+        <footer>
+          <button
+            tuiAsideItem
+            type="button"
+            [iconStart]="expanded() ? '@tui.chevron-left' : '@tui.chevron-right'"
+            (click)="handleToggle()"
+          >
+            {{ expanded() ? 'Collapse' : 'Expand' }}
+          </button>
+        </footer>
+      </aside>
+    }
+    <main tuiNavigationMain>
+      <router-outlet></router-outlet>
+    </main>
+
+  </div>
+
+  <!--
+     If you need, you can add something between Taiga portal layers:
+    -->
+  <ng-container ngProjectAs="tuiOverContent">
+    <!-- Content over app content -->
+  </ng-container>
+  <ng-container ngProjectAs="tuiOverDialogs">
+    <!-- Content over dialogs -->
+  </ng-container>
+  <ng-container ngProjectAs="tuiOverAlerts">
+    <!-- Content over alerts -->
+  </ng-container>
+  <ng-container ngProjectAs="tuiOverDropdowns">
+    <!-- Content over dropdowns -->
+  </ng-container>
+  <ng-container ngProjectAs="tuiOverHints">
+    <!-- Content over hints -->
+  </ng-container>
 </tui-root>

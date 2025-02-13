@@ -67,7 +67,7 @@ export class AuthService {
                 switch (res.status) {
                     case 200:
                         this.currentUser = user;
-                        this.router.navigate(['/']);
+                        this.router.navigate(['']);
                         break;
                     case 403:
                         throw new Error('Wrong username or password');
