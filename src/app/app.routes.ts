@@ -1,9 +1,14 @@
 import { Route } from '@angular/router';
-import { TgLoginWidgetComponent } from './tg-login-widget/tg-login-widget.component';
+import { MainComponent } from './main/main.component';
+import { LoginComponent } from './login/login.component';
 
 export const appRoutes: Route[] = [
     {
         path: '',
-        component: TgLoginWidgetComponent,
+        component: MainComponent
+    },
+    {
+        path: 'login',
+        component: LoginComponent
     }
 ];

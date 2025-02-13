@@ -9,5 +9,5 @@ export interface WidgetConfiguration {
     // Radius of buttons corners(0-20). Default: 20
     cornerRadius?: number;
     // Request for write access. Default: false
-    accessToWriteMessages?: boolean
+    accessToWriteMessages?: boolean;
 }

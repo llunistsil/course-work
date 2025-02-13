@@ -1,4 +1,4 @@
-import { TuiRoot } from "@taiga-ui/core";
+import { TuiRoot } from '@taiga-ui/core';
 import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
@@ -9,4 +9,5 @@ import { RouterModule } from '@angular/router';
     styleUrl: './app.component.less',
     standalone: true
 })
-export class AppComponent {}
+export class AppComponent {
+}
