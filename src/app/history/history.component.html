@@ -1,0 +1,43 @@
+<!-- transaction-history.component.html -->
+<table tuiTable class="tui-space_auto" [columns]="columns">
+  <thead>
+  <tr tuiThGroup>
+    @for (column of columns; track column) {
+      <th *tuiHead="column" tuiTh>
+        {{ columnNames[column] }}
+      </th>
+    }
+  </tr>
+  </thead>
+  <tbody
+    *tuiLet="transactions.value | tuiTableSort as sortedData"
+    tuiTbody
+    [data]="sortedData"
+  >
+  <tr *ngFor="let item of sortedData" tuiTr>
+    @for (column of humanColumns; track column) {
+      <td *tuiCell="column" tuiTd>
+        @if (column === 'date') {
+          {{ item[column] | date: 'dd.MM.yy HH:mm' }}
+        } @else {
+          {{ column === 'categoryName' ? (item[column] || '-') : item[column] }}
+        }
+      </td>
+    }
+    <td *tuiCell="'actions'" tuiTd>
+                <span tuiStatus>
+                    <button
+                      appearance="floating"
+                      iconStart="@tui.trash"
+                      size="xs"
+                      tuiIconButton
+                      type="button"
+                      (click)="delete(item)"
+                    >
+                        Remove
+                    </button>
+                </span>
+    </td>
+  </tr>
+  </tbody>
+</table>

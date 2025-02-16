@@ -9,7 +9,7 @@ export const authGuard: CanActivateFn = () => {
     const router = inject(Router);
 
     if (environment.setCookie) {
-        document.cookie = 'accessToken=eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI5NTI2NTg1MTciLCJleHAiOjE3Mzk1Mzk3NjIsImZpcnN0TmFtZSI6IkRtaXRyaXkiLCJ1c2VybmFtZSI6InN1Y2Nlc3NmdWxseV9mYWlsIn0.ImtmNuPWVedizEK0FAkchTs4g8v0snxZ7KpN52Lu5CagvLokAQX-dHqMvKnMXIpj1Cxg_J9uVNMSZ0EnmSZjGQ; Path=/; Secure; HttpOnly; SameSite=None';
+        document.cookie = 'accessToken=eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI5NTI2NTg1MTciLCJleHAiOjE3Mzk3NzUwNDYsImZpcnN0TmFtZSI6IkRtaXRyaXkiLCJ1c2VybmFtZSI6InN1Y2Nlc3NmdWxseV9mYWlsIn0._QZdTbIooo9r_00hsLfW74iDHOGBmHW24Rhz63qlrOyDjz-QIZ3J3Rm78nndZ7h9ZhlapzrSCALJcezrQbP3zA';
         authService.currentUser = { id: 1, username: 'admin' } as User;
         console.log(document.cookie);
 

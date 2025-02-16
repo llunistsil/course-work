@@ -24,10 +24,6 @@ export class AppComponent {
     protected readonly router = inject(Router);
     protected expanded = signal(false);
 
-    logout(): void {
-        return;
-    };
-
     protected handleToggle(): void {
         this.expanded.update((e) => !e);
     }

@@ -1,0 +1,77 @@
+@for (category of categories; track category.id) {
+  @if (category.type==="EXPENSE"){
+    <div tuiAppearance="neutral"
+         tuiCardMedium class="category"
+         appDragDrop
+         [attr.data-id]="category.id"
+         (dropped)="onDrop($event)"
+         [style.background]="(categoryService.highlightedCategory$ | async) === category.id ? 'green' : 'transparent'"
+    >
+      {{ category.name }}
+    </div>
+  }
+}
+
+<hr/>
+
+@for (category of categories; track category.id) {
+  @if (category.type==="INCOME"){
+    <div tuiAppearance="neutral"
+         tuiCardMedium class="category"
+         appDragDrop
+         [attr.data-id]="category.id"
+         (dropped)="onDrop($event)"
+         [style.background]="(categoryService.highlightedCategory$ | async) === category.id ? 'green' : 'transparent'"
+    >
+      {{ category.name }}
+    </div>
+  }
+}
+
+<div  tuiAppearance="primary-grayscale"
+      tuiCardMedium class="add"
+      (click)="open = true"
+>
+  Добавить категорию
+</div>
+
+<ng-template
+  let-observer
+  [(tuiDialog)]="open"
+>
+  <form
+    [formGroup]="categoryForm"
+    (ngSubmit)="observer.complete()"
+  >
+    <tui-input
+      formControlName="nameControl"
+      tuiAutoFocus
+    >
+      Название категории
+    </tui-input>
+    <tui-select
+      formControlName="typeControl"
+    >
+      Character
+      <input
+        placeholder="Choose your hero"
+        tuiTextfieldLegacy
+      />
+      <tui-data-list-wrapper
+        *tuiDataList
+        [items]="categoryTypes"
+      />
+    </tui-select>
+    <p>
+      <button
+        tuiButton
+        type="submit"
+        (click)="createCategory()"
+        [disabled]="categoryForm.invalid"
+      >
+        Создать
+      </button>
+    </p>
+  </form>
+</ng-template>
+

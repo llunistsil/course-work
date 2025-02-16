@@ -8,26 +8,8 @@
     </span>
     <hr />
     @if (authService.currentUser?.username) {
-      <a
-        iconStart="@tui.files"
-        tuiIconButton
-        type="button"
-        [routerLink]="['']"
-      >
-        File Export
-      </a>
-
       <tui-avatar [src]="authService.currentUser!.username!.slice(0, 2)" [round]="false"
                   [style.background-color]="'var(--tui-background-neutral-2)'" />
-      <button
-        iconStart="@tui.log-out"
-        tuiIconButton
-        type="button"
-        [routerLink]="['login']"
-        (click)="logout()"
-      >
-        Log out
-      </button>
     }
   </header>
   <div [style.display]="'flex'">
@@ -36,12 +18,28 @@
         [tuiNavigationAside]="expanded()"
       >
         <button
+          iconStart="@tui.chart-column"
+          tuiAsideItem
+          type="button"
+          (click)="router.navigate(['analytics'])"
+        >
+          Анализ финансов
+        </button>
+        <button
+          iconStart="@tui.history"
+          tuiAsideItem
+          type="button"
+          (click)="router.navigate(['history'])"
+        >
+          История транзакций
+        </button>
+        <button
           iconStart="@tui.files"
           tuiAsideItem
           type="button"
-          (click)="router.navigate([''])"
+          (click)="router.navigate(['settings'])"
         >
-          Export stats
+          Экспортировать данные
         </button>
         <footer>
           <button

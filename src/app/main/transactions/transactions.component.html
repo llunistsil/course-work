@@ -1,0 +1,37 @@
+<div class="transactions-cont">
+  @for (transaction of undefinedTransactions; track transaction.id) {
+    <span
+      tuiMessage
+      draggable="true"
+      (dragstart)="onDragStart($event, transaction)"
+      (dragend)="onDragEnd($event, transaction)"
+    >
+      {{ transaction.message }}
+    </span>
+  }
+</div>
+
+<div  tuiAppearance="primary-grayscale"
+      tuiCardMedium class="add"
+      (click)="open = true"
+>
+  Создать транзакцию
+</div>
+
+<ng-template
+  let-observer
+  [(tuiDialog)]="open"
+>
+  <form  [formGroup]="transactionForm"
+         (ngSubmit)="observer.complete()">
+    <tui-input
+      formControlName="messageControl"
+      tuiAutoFocus
+    >
+      Введите сообщение
+    </tui-input>
+
+    <button tuiButton [disabled]="transactionForm.invalid" type="submit" (click)="submit()">Отправить</button>
+  </form>
+
+</ng-template>
